@@ -33,18 +33,17 @@ class ButlerDiagram:
 
 
 
-def butler_diagram( lat ):
+def butler_diagram( G, mats ):
     """Constructs the Butler diagram for the Z_pG-module U. G must be a p-group. The action of 
     the generators of G on U is determined by the matrices in mats."""
 
     # first collect data from lat
-    G, mats = lat.group, lat.mat_gens
     p = ZZ(prime_divisors( G.order())[0])
     Q = mats[0][0,0].parent()
     FG = GroupAlgebra( G, Q )
 
     # calculate the idempotents 
-    ids = idempotents( FG )
+    ids = idempotents_of_group( G )
     nr_ids = len( ids )
 
     # calculate the images of the idempontents under the representation
