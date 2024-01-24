@@ -14,7 +14,7 @@ class ButlerDiagram:
     self.action_Vi:             the sequence of matrices defining the action of G on the Vi
 
     """
-    def __init__( self, group, p, R, F, R0, ids, V, Vi, V_gens, Vi_gens ):
+    def __init__( self, group, p, R, F, R0, ids, V, Vi, V_gens, Vi_gens, depth ):
         self.group = group
         self.p = p
         self.padic_ring = R
@@ -25,7 +25,8 @@ class ButlerDiagram:
         self.V = V
         self.Vi = Vi
         self.action_V = V_gens
-        self.action_Vi = Vi_gens 
+        self.action_Vi = Vi_gens
+        self.depth=depth
 
     # the function  that defines how a Butler diagram is printed
     def __repr__( self ):
@@ -106,4 +107,4 @@ def butler_diagram( G, mats ):
                     r*mei, is_member = True  )[1] for r in gens_Vi[i] ] ))
     
     return ButlerDiagram( G, p, Q, Q.integer_ring(), 
-                IntegerModRing( p**-depth ), ids, gens_V, gens_Vi, mats_V, mats_Vi )
+                IntegerModRing( p**-depth ), ids, gens_V, gens_Vi, mats_V, mats_Vi, depth )

@@ -38,7 +38,7 @@ def butler_diagram_from_lattice( lattice ):
     the generators of G on U is determined by the matrices in mats."""
 
     # first collect data from lat
-    G=lattice.G
+    G=lattice.group
     mats=lattice.U_acts
     p = ZZ(prime_divisors( G.order())[0])
     Q = mats[0][0,0].parent()

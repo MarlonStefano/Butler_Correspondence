@@ -78,7 +78,7 @@ def morfis(geradores, g):
 # create the lattice from the butler diagram
 
 def lattice_from_diagram(diag,lamb):
-
+    
     #G = diag.group
     #ids = diag.idempotents
     #k = -depth_list( [ x.coefficients() for x in ids ])
@@ -86,13 +86,13 @@ def lattice_from_diagram(diag,lamb):
     #mats = diag.action_Vi
     #V_i_gens = diag.Vi
     #mat_lambda_i = [ Lambda_i_basis( x ) for x in ids ]
-
+    
 
     # primeiro recolhemos as informações básicas sobre os Lambda_i e a ação de G em cada um.
 
     
     # Aqui calculamos JVi e os quocientes Vi/JVi
-    k=diag.k
+    k=-diag.depth
     mats=diag.action_Vi
     V_i_gens=[diag.Vi[j].rows() for j in range(len(diag.Vi))]
     G=lamb.G
