@@ -14,7 +14,7 @@ class ButlerDiagram_from_lattice:
     self.action_Vi:             the sequence of matrices defining the action of G on the Vi
 
     """
-    def __init__( self, group, p, R, F, R0, ids, V, Vi, V_gens, Vi_gens ):
+    def __init__( self, group, p, R, F, R0, ids, V, Vi, V_gens, Vi_gens,depth ):
         self.group = group
         self.p = p
         self.padic_ring = R
@@ -26,7 +26,7 @@ class ButlerDiagram_from_lattice:
         self.Vi = Vi
         self.action_V = V_gens
         self.action_Vi = Vi_gens 
-
+        self.depth=depth
     # the function  that defines how a Butler diagram is printed
     def __repr__( self ):
         return f'Butler diagram for the group {self.group} over {self.padic_ring}'
@@ -39,7 +39,9 @@ def butler_diagram_from_lattice( lattice ):
 
     # first collect data from lat
     G=lattice.group
-    mats=lattice.U_acts
+    A=pAdicField( 2, 3, print_mode = "digits" )
+    L=lattice.U_acts
+    mats=[matrix(A,L[i].rows()) for i in range(len(L))]
     p = ZZ(prime_divisors( G.order())[0])
     Q = mats[0][0,0].parent()
     FG = GroupAlgebra( G, Q )
@@ -108,4 +110,4 @@ def butler_diagram_from_lattice( lattice ):
                     r*mei, is_member = True  )[1] for r in gens_Vi[i] ] ))
     
     return ButlerDiagram_from_lattice( G, p, Q, Q.integer_ring(), 
-                IntegerModRing( p**-depth ), ids, gens_V, gens_Vi, mats_V, mats_Vi )
+                IntegerModRing( p**-depth ), ids, gens_V, gens_Vi, mats_V, mats_Vi, depth )

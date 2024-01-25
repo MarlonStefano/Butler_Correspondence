@@ -1,4 +1,4 @@
-
+from sage.groups.abelian_gps.abelian_group_gap import AbelianGroupGap
 def right_regular_action( g ):
 
     g_elts = g.list()
@@ -38,7 +38,7 @@ def subgroups_with_cyclic_quotient( g ):
 
 def is_min_normal_subgroup( g, n, m, p ):
 
-    return n.is_subgroup( m ) and (( g.order()//n.order() > p and m.order()//n.order() == p ) or 
+    return n.is_subgroup_of( m ) and (( g.order()//n.order() > p and m.order()//n.order() == p ) or 
                                    ( g.order()//n.order() == p and m.order() == g.order() ))
     
 def idempotents_of_group( g, F = False ):
