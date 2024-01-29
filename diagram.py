@@ -94,17 +94,14 @@ def butler_diagram( G, mats ):
     mats_V = []
     for m in mats:
         mei = matrix( R0, m )
-        mats_V.append( matrix( [ row_reduce( matrix( gens_V ), 
-                            r*mei, is_member = True )[1] for r in gens_V ] ))
+        mats_V.append( ac_U(mei,gens_V.rows(),R0))
 
 
     # compute the matrices that define the G-action on the Vi 
     mats_Vi = [ [] for _ in range( nr_ids )]
     for i in range( nr_ids ):
-        for m in mats:
-            mei = matrix( R0, m )
-            mats_Vi[i].append( matrix( [ row_reduce( matrix( gens_Vi[i] ), 
-                    r*mei, is_member = True  )[1] for r in gens_Vi[i] ] ))
+        mats_Vi[i]=[ac_U(matrix(R0,m), gens_Vi[i].rows(),R0) for m in mats ]
+    
     
     return ButlerDiagram( G, p, Q, Q.integer_ring(), 
                 IntegerModRing( p**-depth ), ids, gens_V, gens_Vi, mats_V, mats_Vi, depth )

@@ -93,11 +93,12 @@ def lattice_from_diagram(diag,lamb):
     
     # Aqui calculamos JVi e os quocientes Vi/JVi
     k=-diag.depth
-    mats=diag.action_Vi
+    p=lamb.p
+    mats= [[matrix(IntegerModRing(p**k), diag.action_Vi[j][i].rows()) for i in range(len(diag.action_Vi[j]))] for j in range(len(diag.action_Vi))]
     V_i_gens=[diag.Vi[j].rows() for j in range(len(diag.Vi))]
     G=lamb.G
     r=len(lamb.sub)+1
-    p=lamb.p
+    
     R=Zp(p)
 
     l=len(vector(V_i_gens[0][0]))

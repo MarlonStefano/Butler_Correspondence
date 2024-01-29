@@ -46,3 +46,12 @@ def image_vector_under_action( V, mat, vec ):
     # get the coefficients of vec in the linear combination 
     # of the rows of mat
     return V.solve_left( vec )*mat*V 
+
+def ac_U(mat,gen_U,R0):
+    l=[mat*gen_U[j] for j in range(len(gen_U))]
+    m=transpose(matrix(R0,gen_U))
+    coor=[[] for _ in range(len(l))]
+    for j in range(len(l)):
+        coor[j]=m.solve_right(vector(R0,l[j]))
+    mact=transpose(matrix(R0,coor))
+    return mact
