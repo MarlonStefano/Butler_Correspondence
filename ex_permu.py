@@ -1,6 +1,6 @@
 
 G = AbelianGroupGap( div_ele )
-R = pAdicField( ZZ(prime_divisors( G.order())[0]) , 3, print_mode = "digits" )
+R = pAdicField( ZZ(prime_divisors( G.order())[0]) , 20, print_mode = "digits" )
 def act_mat_g(G):
     L=[[] for _  in range(G.gens()[0].order())]
     for j in range(G.gens()[0].order()):
