@@ -73,12 +73,12 @@ def butler_diagram( G, mats ):
     # Compute the generators for the subspaces Vi
     
     for k in range( nr_ids ):   
-        for row in ims[k]:
-            for z in range( -depth ):
-                vec = vector( R0(x) for x in p**z*row ); 
-                if vec.is_zero():
-                    continue
-                gens_Vi[k].append( vec )
+        for row in ims[k].transpose():
+            #for z in range( -depth ):
+            vec = vector( R0(x) for x in row ); 
+            if vec.is_zero():
+                continue
+            gens_Vi[k].append( vec )
         
         gens_Vi[k] = hnf( matrix( gens_Vi[k] ))[0]
         gens_Vi[k] = matrix( [ x for x in gens_Vi[k] if not x.is_zero()])
