@@ -30,15 +30,19 @@ def Diag_C2xC2(k):
            diag.append(L4[i])          
     gen_di=[[diag[i][j].gens() for j in range(4)] for i in range(len(diag))]
     gen_Vi=[[[ V(x).exponents() for x in gen_di[i][j]] for j in range(4)] for i in range(len(diag))]
+    for j in range(gen_Vi):
+        for i in range(4):
+            if len(gen_Vi[j][i])==0:
+                gen_Vi[j][i]=[vector([0 for j in range(k)])]
     return diag, gen_Vi
 def lattices_C2xC2(k):
-    gen_Vi=Diag_C2xC2[1]
+    gen_Vi=Diag_C2xC2(k)[1]
     p=2
     lamb_info=geral([2,2])
     latt_C2xC2=[[] for _ in range(len(gen_Vi))]
     mats=[[] for _ in range(len(gen_Vi))]
     for i in range(len(gen_Vi)):
-        mats[i]=[[identity_matrix(IntegerModRing(2),Diag_C2xC2(k)[0][i][j].order()),identity_matrix(IntegerModRing(2),Diag_C2xC2(k)[0][i][j].order())] for j in range(4)]
+        mats[i]=[[identity_matrix(IntegerModRing(2),len(gen_Vi[i][j])),identity_matrix(IntegerModRing(2),len(gen_Vi[i][j]))] for j in range(4)]
 
         latt_C2xC2[i]=[lattice(p,mats[i], Diag_C2xC2(k)[1][i],lamb_info).U_acts]
     return Lattices_C2xC2(latt_C2xC2, mats, gen_Vi)
