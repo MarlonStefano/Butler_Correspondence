@@ -30,7 +30,7 @@ def Diag_C2xC2(k):
            diag.append(L4[i])          
     gen_di=[[diag[i][j].gens() for j in range(4)] for i in range(len(diag))]
     gen_Vi=[[[ V(x).exponents() for x in gen_di[i][j]] for j in range(4)] for i in range(len(diag))]
-    for j in range(gen_Vi):
+    for j in range(len(gen_Vi)):
         for i in range(4):
             if len(gen_Vi[j][i])==0:
                 gen_Vi[j][i]=[vector([0 for j in range(k)])]
