@@ -23,49 +23,7 @@ def __repr__(self):
 from sage.groups.abelian_gps.abelian_group_gap import AbelianGroupGap
 # função que fornece a matriz da ação de G em Lambda_i através de um gerador específico de um quociente de G que é cíclico. 
 #toma como input um primo p e a ordem do quociente.
-def mat_lam(p,indi):
-     l=p**(-1)*indi*(p-1)
-     L=[[] for _  in range(l)]
-     for j in range(l):
-        L[j]=[0 for i in range(l)]
-     for j in range(l-1):
-        L[j][j+1]=1
-     for j in range(p-1):
-        L[l-1][p**(-1)*indi*j]=-1
-     return transpose(matrix(ZZ,L))
-def right_regular_action( g ):
 
-    g_elts = g.list()
-    g_gens = g.gens()
-    perms = []
-    sym_gp = SymmetricGroup( g.order()) 
-    for g in g_gens:
-        perm = sym_gp( [ g_elts.index( x*g ) + 1 for x in g_elts ])
-        perms.append( perm )
-    
-    return sym_gp.subgroup( perms, canonicalize = False )
-
-
-def subgroups_with_cyclic_quotient( g ):
-    gp = right_regular_action( g )
-
-    subs_gp = [ x for x in gp.subgroups() if gp.quotient(x).is_cyclic() ]
-    no_gens = len( g.gens())
-    gen_dict = { str(gp.gens()[k]): g.gens()[k] for k in range( no_gens )}
-    #return gen_dict
-    
-    subs = []
-    for h in subs_gp:
-        gens_h_perm = h.gens()
-        gens_h = []
-        for x in gens_h_perm: 
-            if x == x**0:
-                continue
-            w = x.word_problem( gp.gens(), as_list = True, display = False )
-            gens_h.append( prod( gen_dict[x[0]]**x[1] for x in w ))
-        subs.append( g.subgroup( gens_h ))
-
-    return subs 
 # função que devolve uma lista de geradores de cada quociente de G que é cíclico e sua matriz de ação em Lambda_i.
 #  Toma como input uma lista de divisores elementares de G.
 
