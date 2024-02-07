@@ -110,7 +110,7 @@ def morfis(geradores, g):
     m=[[] for _ in range(len(g.rows()[0]))]
     for j in range(len(g.rows()[0])):
         m[j]=sum(g[i][j]*F(geradores[i]) for i in range(len(g.rows()[0])))
-
+    return m
 def right_regular_action( g ):
 
     g_elts = g.list()
@@ -145,4 +145,4 @@ def subgroups_with_cyclic_quotient( g ):
 
     return subs         
 
-    return m
+    
