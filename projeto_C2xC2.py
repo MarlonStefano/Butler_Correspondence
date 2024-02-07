@@ -1,6 +1,6 @@
 class Lattices_C2xC2:
-    def __init__(self,latt_C2xC2, mats, gen_Vi):
-        self.latt_C2xC2=latt_C2xC2
+    def __init__(self,act_latt, mats, gen_Vi):
+        self.act_latt=act_latt
         self.mats=mats
         self.gen_Vi=gen_Vi
 from sage.groups.abelian_gps.abelian_group_gap import AbelianGroupGap
@@ -40,14 +40,16 @@ def Diag_C2xC2(k):
                 
     return diag, gen_Vi, mats
 def lattices_C2xC2(k):
-    mats=Diag_C2xC2(k)[2]
-    gen_Vi=Diag_C2xC2(k)[1]
+    d=Diag_C2xC2(k)
+    mats=d[2]
+    gen_Vi=d[1]
     m=1
     lamb_info=geral([2,2])
     latt_C2xC2=[[] for _ in range(len(gen_Vi))]
     
     for i in range(len(gen_Vi)):
-        latt_C2xC2[i]=[lattice(m,mats[i], Diag_C2xC2(k)[1][i],lamb_info).U_acts]
-    return Lattices_C2xC2(latt_C2xC2, mats, gen_Vi)
+        latt_C2xC2[i]=[lattice(m,mats[i], d[1][i],lamb_info)]
+    act_latt=[latt_C2xC2[i].U_acts for i in range(len(latt_C2xC2))]    
+    return Lattices_C2xC2(act_latt, mats, gen_Vi)
 
                               
