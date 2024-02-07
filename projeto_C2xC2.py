@@ -45,10 +45,7 @@ def lattices_C2xC2(k):
     gen_Vi=d[1]
     m=1
     lamb_info=geral([2,2])
-    latt_C2xC2=[[] for _ in range(len(gen_Vi))]
-    
-    for i in range(len(gen_Vi)):
-        latt_C2xC2[i]=[lattice(m,mats[i], d[1][i],lamb_info)]
+    latt_C2xC2=[lattice(m,mats[i], d[1][i],lamb_info) for i in range(len(d[1]))]
     act_latt=[latt_C2xC2[i].U_acts for i in range(len(latt_C2xC2))]    
     return Lattices_C2xC2(act_latt, mats, gen_Vi)
 
