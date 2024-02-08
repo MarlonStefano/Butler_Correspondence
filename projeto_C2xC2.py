@@ -12,7 +12,7 @@ def Diag_C2xC2(k):
     di_gen=[[] for _ in range(len(L))]
     gen_che=[[] for _ in range(len(L))]
     for i in range(len(L)):
-        di_gen[i]=[[x for x in 4[i][j].gens() ] for j in range(4)]
+        di_gen[i]=[[x for x in L[i][j].gens() ] for j in range(4)]
         gen_che[i]=[[di_gen[i][j] for j in range(4) if j!=m] for m in range(4)]
         gen_che[i]=[sum(gen_che[i][j],[]) for j in range(4)]
     diag=[ ]
