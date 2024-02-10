@@ -5,7 +5,10 @@ class Lattices_C2xC2:
         self.gen_Vi=gen_Vi
 from sage.groups.abelian_gps.abelian_group_gap import AbelianGroupGap
 def Diag_C2xC2(k):
+    W=VectorSpace(IntegerModRing(2),k)
+    M=MatrixSpace(IntegerModRing(2),k)
     V=AbelianGroupGap([2]*k)
+    aut=V.aut()
     sub=V.all_subgroups()
     L=[[x,y,z,w] for x in sub for y in sub for z in sub for w in sub]
 
@@ -17,10 +20,17 @@ def Diag_C2xC2(k):
         gen_che[i]=[sum(gen_che[i][j],[]) for j in range(4)]
     diag=[ ]
     for i in range(len(L)): 
-        if all(V.subgroup(gen_che[i][j]).order()==V.order() for j in range(4)):
-           diag.append(L[i])          
-    gen_di=[[diag[i][j].gens() for j in range(4)] for i in range(len(diag))]
-    gen_Vi=[[[ V(x).exponents() for x in gen_di[i][j]] for j in range(4)] for i in range(len(diag))]
+        if all(V.subgroup(gen_che[i][j]).order()==2**k for j in range(4)):
+           diag.append(L[i])
+    cl=[[] for _ in range(len(diag))]
+    for i in range(1,len(diag)):
+        cl[0]=[x for x in diag if any(all(V.subgroup([f(diag[0][j].gens()[l]) for l in range(len(diag[0][j].gens()))]).is_subgroup_of(x[j])  and V.subgroup([f(diag[0][j].gens()[l]) for l in range(len(diag[0][j].gens()))]).order()==x[j].order() for j in range(4) ) for f in aut)]
+        cl[i]=[x for x in diag if any(all(V.subgroup([f(diag[i][j].gens()[l]) for l in range(len(diag[i][j].gens()))]).is_subgroup_of(x[j])  and V.subgroup([f(diag[i][j].gens()[l]) for l in range(len(diag[i][j].gens()))]).order()==x[j].order() for j in range(4) ) for f in aut) and all(x not in cl[k] for k in range(i)) ]
+    cl=[x for x in cl if x!=[]] 
+    cl=[cl[j][0] for j in range(len(cl))]
+
+    gen_di=[[cl[i][j].gens() for j in range(4)] for i in range(len(cl))]
+    gen_Vi=[[[ V(x).exponents() for x in gen_di[i][j]] for j in range(4)] for i in range(len(cl))]
     for j in range(len(gen_Vi)):
         for i in range(4):
             if len(gen_Vi[j][i])==0:
@@ -28,8 +38,12 @@ def Diag_C2xC2(k):
     mats=[[] for _ in range(len(gen_Vi))]
     for i in range(len(gen_Vi)):
         mats[i]=[[identity_matrix(IntegerModRing(2),len(gen_Vi[i][j])),identity_matrix(IntegerModRing(2),len(gen_Vi[i][j]))] for j in range(4)]
-                
-    return diag, gen_Vi, mats
+    pro=[x for x in M if x**2==x]
+    pro_diag=[[x for x in pro if  all(x*W(w) in W.subspace([y for y in gen_Vi[i][j]]) for w in gen_Vi[i][j] for j in range(4)) ] for i in range(len(gen_Vi))   ]
+
+
+                                         
+    return diag, gen_Vi, mats,cl,pro_diag
 def lattices_C2xC2(k):
     d=Diag_C2xC2(k)
     mats=d[2]
@@ -40,4 +54,4 @@ def lattices_C2xC2(k):
     act_latt=[latt_C2xC2[i].U_acts for i in range(len(latt_C2xC2))]    
     return Lattices_C2xC2(act_latt, mats, gen_Vi)
 
-                              
+
