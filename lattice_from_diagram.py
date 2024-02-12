@@ -10,7 +10,7 @@ class Reticulado_ass_diagrama:
         self.U_acts=U_acts
         self.mats = mats 
         self.p = prime_divisors( G.order())[0]
-        self.padic_ring = mats[0][0][0].parent()
+        self.padic_ring = Zp(prime_divisors( G.order())[0])
 
 # create the lattice from the butler diagram given by a lattice
 
@@ -37,8 +37,10 @@ def lattice_from_diagram(diag,lamb):
     r=len(lamb.sub)+1
     
     R=Zp(p)
-
-    l=len(vector(V_i_gens[0][0]))
+    for j in range(len(V_i_gens)):
+        if V_i_gens[j]!=[]:
+            l=len(V_i_gens[j][0])
+      
     
     F0=ZZ**l
     #return F0

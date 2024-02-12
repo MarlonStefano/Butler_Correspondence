@@ -35,7 +35,7 @@ def lattice(k,mats, V_i_gens,lamb):
     p=lamb.p
     R=Zp(p)
 
-    l=len(vector(V_i_gens[0][0]))
+    l=len(vector(V_i_gens[0][0])) # supostamente V_i_gens[0][0] \neq []
     
     F0=ZZ**l
     #return F0
