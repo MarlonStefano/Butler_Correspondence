@@ -1,5 +1,5 @@
 R = pAdicField( 2, 3, print_mode = "digits" )
-G = AbelianGroup( [2,2,2] )
+G = AbelianGroupGap( [2,2,2] )
 mats = [
     matrix( R, [[1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0 ],
                 [0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0 ],
