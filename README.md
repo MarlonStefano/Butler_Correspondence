@@ -25,20 +25,79 @@ sage: sub
 [[[1], [-1], [1], [-1]], [[1], [1], [-1], [-1]]]
 This will give you the matrices of the action of the generators of G on the modules (Z_pG)e_i, where the first list corresponds to the action of the first generator on the respective modules (Z_pG)e_0, (Z_pG)e_{f2}, (Z_pG)e_{f1}, (Z_pG)e_{f1*f2} and the second list corresponds to the action of the second generator on these modules. In this case we observe that G must act trivially on the modules V_i because one of the generators acts trivially on the modules and the other generator acts as -1 on the modules, but every V_i must be an Z/2Z-module, so the action of the second generator must be trivial as well. So we can conclude that every component V_i is isomorphic to Z/2Z as an abelian group and the action of G on every component V_i is trivial. This gave us the structure of the diagram for the group G=Z/2Z x Z/2Z. Now we can proceed to calculate a diagram from a lattice. For this we need to define a lattice, and for this we need of the matrices of the action of the generators of G on the lattice. For example, the following matrices define a lattice U for the group G=Z/2Z x Z/2Z:
 
-sage: F = pAdicField( 2, 20, print_mode = "digits" ) (the field of p-adic numbers with a certain precision, for example if we want to work with 2-adic numbers with precision 20)
-
-sage: mats=[matrix(F,[[1, 0, 0, 0, 0], [0, 1, 0, 0, 0], [0, 0, -1, 0, 0], [0, 0, 1, 1, 0], [0, -1, 0, 0, -1]]), matrix(F,[[1, 0, 0, 0, 0], [0, 1, 0, 0, 0], [0, 0, 1, 0, 0], [-1, 0, -1, -1, 0], [0, -1, -1, 0, -1]])]
- As we already defined the group G, we can calculate the diagram that corresponds to the lattice U by running the following command:
+    sage: F = pAdicField( 2, 20, print_mode = "digits" ) (the field of p-adic numbers with a certain precision, for example if we want to work with 2-adic numbers with precision 20)
+    sage: mats=[matrix(F,[[1, 0, 0, 0, 0], [0, 1, 0, 0, 0], [0, 0, -1, 0, 0], [0, 0, 1, 1, 0], [0, -1, 0, 0, -1]]), matrix(F,[[1, 0, 0, 0, 0], [0, 1, 0, 0, 0], [0, 0, 1, 0, 0], [-1, 0, -1, -1, 0], [0, -1, -1, 0, -1]])]
+ 
+ As we already defined the group G, we can calculate the diagram that corresponds to the 
+ lattice U by running the following command:
+    
     sage: diag=butler_diagram(G,mats)
+
 This will give you a function that provides information about the components of the diagram, for example the following command will give you the list of matrices such that the i-th matrix is the matrix whose rows are the generators of the component V_i of the diagram, where the order of the components is the same as the order of the subgroups in the list sub, so the first matrix corresponds to the generators of the component V_0, the second matrix corresponds to the generators of the component V_{f2}, the third matrix corresponds to the generators of the component V_{f1} and the fourth matrix corresponds to the generators of the component V_{f1*f2}. So we can get the generators of the components of the diagram by running the following command: 
 the generator of each component of the diagram:
     sage: diag.Vi 
-[
-[0 0 0 1 0]
-[0 0 0 0 1], [0 0 0 1 1], [0 0 0 1 0], [0 0 0 0 1]].
+    [
+     [0 0 0 1 0]
+     [0 0 0 0 1], [0 0 0 1 1], [0 0 0 1 0], [0 0 0 0 1]].
 
-We can calculate the correspondents diagrams for permutations lattices over a finite abelian p-group G. First we need to define G as we did before, and 
-    
+The module V which is the sum of the components V_i of the diagram is given by the following command:
+    sage: diag.V
+    [0 0 0 1 0]
+    [0 0 0 0 1]
+This is a matrix whose rows are the generators of the module V. We can get the matrices of the action of the generators of G on the module V by running the following command:
+    sage: diag.action_V
+    [
+     [1 0]  [1 0]
+     [0 1], [0 1]
+                 ]
+This is a list of matrices where the first matrix corresponds to the action of the first generator of G on the module V and the second matrix corresponds to the action of the second generator of G on the module V. What we mean by the matrices of the action is that these matrices are the matrices of the action of G relative to the generators of V that appear in the matrix diag.V. The matrices of the action of G on the components V_i of the diagram can be obtained by running the following command:
+    sage: diag.action_Vi
+    [[
+    [1 0]  [1 0]
+    [0 1], [0 1]
+    ], [[1], [1]], [[1], [1]], [[1], [1]]] 
+This is a list of lists of matrices, where the i-th list corresponds to a list of matrices that give the action of the generators of G on the component V_i of the diagram, The matrices are the matrices of the action of G relative to the generators of V_i that appear in the i-th matrix of diag.Vi. So for example the first list corresponds to the component V_0 and the first matrix in this list corresponds to the action of the first generator of G on V_0.
 
-
+PERMUTATIONS LATTICES:
+We can calculate the correspondents diagrams for permutations lattices over a finite abelian p-group G. First we need to define G as we did before. This time we will work with the group G=Z/4Z x Z/2Z for make explicit some differences with the previous example. So we can define G as follows:
+   sage: div_ele=[4, 2]
+   sage: ger=geral(div_ele)
+   sage:G=ger.G
+ Now we can get the list of diagrams that correspond to the permutation lattices over G by running the following command:
+   sage: diag_permu=diag_permu(G)
+Every indecomposable permutation module corresponds to a subgroup of G, and the order of the subgroups of G on G.all_subgroups() is the same as the order of diagrams in the list diag_permu(G) except the first subgroup and the last subgroup of G.all_subgroups() which correspond to the trivial subgroup and the whole group G respectively. So for example we have the following list of subgroups of G:
+   sage: gen=G.gens()
+   sage gen
+    (f1, f3)
+   sage: G.all_subgroups()
+   [Subgroup of Abelian group with gap, generator orders (4, 2) generated by (),
+ Subgroup of Abelian group with gap, generator orders (4, 2) generated by (f3,),
+ Subgroup of Abelian group with gap, generator orders (4, 2) generated by (f2,),
+ Subgroup of Abelian group with gap, generator orders (4, 2) generated by (f2*f3,),
+ Subgroup of Abelian group with gap, generator orders (4, 2) generated by (f2, f3),
+ Subgroup of Abelian group with gap, generator orders (4, 2) generated by (f1, f2),
+ Subgroup of Abelian group with gap, generator orders (4, 2) generated by (f1*f3, f2),
+ Subgroup of Abelian group with gap, generator orders (4, 2) generated by (f2, f3, f1)]
+ Hence the first diagram in the list diag_permu(G) corresponds to the diagram of the permutation module Z_2[G/<f3>] which is:
+   sage: diag_permu[0].Vi
+    [
+               [2 0 2 0]
+    [1 1 1 1], [0 2 0 2], [], [1 3 1 3], [], []] 
+   sage: diag_permu[0].action_Vi
+   [[[1], [1]],
+    [
+   [0 1]  [1 0]
+   [1 0], [0 1]],
+  [[], []], [[3], [1]], [[], []], [[], []]]
+  sage: diag_permu[0].V
+  [1 1 1 1]
+  [0 2 0 2]
+  sage: diag_permu[0].action_V
+  [
+  [1 2]  [1 0]
+  [0 3], [0 1]
+  ]
+  To know the smallest quotient of Z_p such that V is a module over this quotient we can run the following command:
+    sage: diag_permu[0].residue_class_ring
+    Ring of integers modulo 4
  
