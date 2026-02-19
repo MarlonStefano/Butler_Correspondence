@@ -20,7 +20,7 @@ We will briefly describe the process: given a reduced lattice $ U $, we treat $ 
 $$
 U \subseteq \bigoplus_{i=0}^r e_i U \leqslant \mathbb{Q}_p \otimes_{\mathbb{Z}_p} U
 .$$
- We then define the quotients:
+ Then we define the quotients:
 $$
 V_i = \frac{e_i U + U}{U}, \quad i = 0, \ldots, r, \quad \text{and} \quad V = \sum_{i=0}^r V_i.
 $$
@@ -195,7 +195,7 @@ The order of the matrices in the list U.U_acts is the same as the order of the g
                [0 0 2 0]
     [0 0 2 3], [0 0 0 2], [], [0 0 0 1], [], []]
 
-To finish this section, we recall that the information about the structure of the modules $(Z_pG)e_i$ can be obtained through the function geral() that we used at the beginning to get the information about the group G as in the first example.
+To finish this section, we recall that the information about the structure of the modules $(\Z_pG)e_i$ can be obtained through the function geral() that we used at the beginning to get the information about the group $G$ as in the first example.
 ## Lattices from diagrams
 We can also calculate a lattice from a diagram. Diagrams are given by the components $V_i$ and the action of $G$ on these components. So we can define a diagram by giving the components $V_i$ and these components are given by their generators, so we can define a diagram by giving a list of list where the $i$-$th$ list corresponds to the generators of the component $V_i$. We also need to give the matrices of the action of the generators of $G$ on the components $V_i$, we can give this information by giving a list of lists of matrices, where the $i$-$th$ list corresponds to the list of matrices that give the action of the generators of $G$ on the component $V_i$, and the $j$-$th$ matrix in this list corresponds to the action of the $j$-$th$ generator of $G$ on the component $V_i$. So for example we can define a diagram for the group $G=\Z/2\Z \times \Z/2\Z$ as follows:
 
@@ -231,4 +231,4 @@ U.U_acts is a list of matrices where the first matrix corresponds to the action 
     [0 1], [0 1]
     ], [[1], [1]], [[1], [1]], [[1], [1]]]
 
-Recall that to define a diagram we need first to get the information about the group $G$ as the list of subgroups of $G$ that correspond to the non trivial primitive idempotents of $\Z_pG$ and the matrices of the action of the generators of $G$ on the modules $(\Z_pG)e_i$, and this information can be obtained by running the function geral() as we did at the beginning of this tutorial.   
+Recall that to define a diagram we need first to get the information about the group $G$ as the list of subgroups of $G$ that correspond to the non trivial primitive idempotents of $\Z_pG$ and the matrices of the action of the generators of $G$ on the modules $(\Z_pG)e_i$, and this information can be obtained by running the function  geral() as we did at the beginning of this tutorial.   
