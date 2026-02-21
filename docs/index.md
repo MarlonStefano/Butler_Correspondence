@@ -1,39 +1,16 @@
-
+---
+layout: default
+title: Butler Correspondence
+---
 # Tutorial for using the implementation of the Butler's correspondence
 This repository contains an implementation of the Butler's correspondence, which is a bijection between certain combinatorial objects. The code is written in Python and can be used to explore properties of lattices for $\mathbb{Z}_pG$-modules where $G$ is a finite abelian $p$-group and $\Z_p$  is the ring of $p$-adic integers. 
 ## Theoretical background
-<<<<<<< HEAD
-Let  $G$ be a finite abelian $p$-group and let $ \mathbb{Q}_p $ be the field of $ p $-adic numbers. Denote by $ e_0, e_1, \ldots, e_r $ the primitive orthogonal idempotents of the semisimple algebra $ \mathbb{Q}_p G $. In \cite{butler2}, Butler provides a method to associate most $ \mathbb{Z}_p G $-lattices to diagrams of the form:
-$$
-(V; V_0, \ldots, V_r),
-$$
-where $ V $ is a finitely generated $ \mathbb{Z}_p G $-module with $ p^{-1}|G| V = 0 $, and each $ V_i $ is a $ \mathbb{Z}_p G $-submodule of $ V $, subject to the following conditions:
-
-$1.\; V = \sum_{j\neq i} V_j $ for all $ i = 0, 1, \ldots, r $,
-
-$2.$ If $e_i$ is a primitive idempotent of $ \mathbb{Q}_p G $ and $ K_i $ is the kernel of the natural ring homomorphism $ \mathbb{Z}_p G \to (\mathbb{Z}_p G)e_i $, then $ K_i V_i = 0 $.
-
-There is a  natural notion of morphism between diagrams, allowing us to establish a category of such objects.
-A $ \mathbb{Z}_p G $-lattice is said to be \emph{reduced} if it does not have a direct summand isomorphic to any of the modules $ (\mathbb{Z}_p G)e_i $ for $ i = 0, \ldots, r $, or to $ \mathbb{Z}_p G $ itself.
-Butler's correspondence is defined in one direction via a functor that associates a reduced $ \mathbb{Z}_p G $-lattice $ U $ to a diagram $ \Delta(U) = (V; V_0, \ldots, V_r)$. Conversely, each diagram corresponds to a reduced lattice, though this process is not functorial. However, two diagrams are isomorphic if and only if they correspond to isomorphic reduced lattices.
-
-We will briefly describe the process: given a reduced lattice $ U $, we treat $ U $ as its image in $ \mathbb{Q}_p \otimes_{\mathbb{Z}_p} U $. For each idempotent $ e_i $, we associate the lattice $ e_i U \subseteq \mathbb{Q}_p \otimes_{\mathbb{Z}_p} U $. Since $ \sum_{i=0}^r e_i = 1 $, we have $U\leqslant\sum_{i=0}^r e_i U$. In fact, we have:   
-$$
-U \subseteq \bigoplus_{i=0}^r e_i U \leqslant \mathbb{Q}_p \otimes_{\mathbb{Z}_p} U
-.$$
- We then define the quotients:
-$$
-V_i = \frac{e_i U + U}{U}, \quad i = 0, \ldots, r, \quad \text{and} \quad V = \sum_{i=0}^r V_i.
-$$
-Thus, $ \Delta(U) = (V; V_0, \ldots, V_r) $ satisfies the conditions of a Butler diagram.  
-In the reverse direction, given a Butler diagram $ D = (V; V_0, V_1, \ldots, V_r) $, we construct a reduced $ \mathbb{Z}_p G $-lattice $ L(D) $ as follows. Let $ J $ be the Jacobson radical of $ \mathbb{Z}_p G $. If $ d_i = \dim_{\mathbb{F}_p}(V_i / J V_i) $, for $ i = 0, \ldots, r $, we take the lattice:
-=======
 Let  $G$ be a finite abelian  $p$-group and let  $\mathbb{Q}_p$ be the field of  $p$-adic numbers. Denote by $e_0, e_1,\ldots, e_r$ the primitive orthogonal idempotents of the semisimple algebra $\mathbb{Q}_p G$. In the article entitled "On the classification of local integral representations of finite abelian p-groups", Butler provides a method to associate most $\mathbb{Z}_pG$-lattices to diagrams of the form:
 $$(V; V_0, \ldots, V_r),$$
 where  $V$ is a finitely generated $\mathbb{Z}_p G$-module with $p^{-1}|G| V = 0$, and each $V_i$ is a $\mathbb{Z}_pG$-submodule of $V$, subject to the following conditions:
 \begin{itemize}
-    \item  $V = \sum_{j\neq i} V_j$ for all $i = 0, 1, \ldots, r$,
-    \item if $e_i$ is a primitive idempotent of $\mathbb{Q}_p G$ and $K_i$ is the kernel of the natural ring homomorphism $\mathbb{Z}_pG \to (\mathbb{Z}_p G)e_i$, then \( K_i V_i = 0 \).
+    \item \( V = \sum_{j\neq i} V_j \) for all \( i = 0, 1, \ldots, r \),
+    \item if \( e_i \) is a primitive idempotent of \( \mathbb{Q}_p G \) and \( K_i \) is the kernel of the natural ring homomorphism \( \mathbb{Z}_p G \to (\mathbb{Z}_p G)e_i \), then \( K_i V_i = 0 \).
 \end{itemize}
 
 There is a  natural notion of morphism between diagrams, allowing us to establish a category of such objects.
@@ -52,7 +29,6 @@ V_i = \frac{e_i U + U}{U}, \quad i = 0, \ldots, r, \quad \text{and} \quad V = \s
 \]
 Thus, \( \Delta(U) = (V; V_0, \ldots, V_r) \) satisfies the conditions of a Butler diagram.  
 In the reverse direction, given a Butler diagram \( D = (V; V_0, V_1, \ldots, V_r) \), we construct a reduced \( \mathbb{Z}_p G \)-lattice \( L(D) \) as follows. Let \( J \) be the Jacobson radical of \( \mathbb{Z}_p G \). If \( d_i = \dim_{\mathbb{F}_p}(V_i / J V_i) \), for \( i = 0, \ldots, r \), we take the lattice:
->>>>>>> 2c07e07f8a143b31fde8a9622872735b2451c4b8
 
 
 \[
