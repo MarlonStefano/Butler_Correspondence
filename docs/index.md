@@ -1,7 +1,4 @@
----
-layout: default
-title: Butler Correspondence
----
+
 
 # Tutorial for using the implementation of the Butler's correspondence
 This repository contains an implementation of the Butler's correspondence, which is a bijection between certain combinatorial objects. The code is written in Python and can be used to explore properties of lattices for $\mathbb{Z}_pG$-modules where $G$ is a finite abelian $p$-group and $\Z_p$  is the ring of $p$-adic integers. 
