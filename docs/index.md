@@ -5,11 +5,11 @@ title: Butler Correspondence
 # Tutorial for using the implementation of the Butler's correspondence
 This repository contains an implementation of the Butler's correspondence, which is a bijection between certain combinatorial objects. The code is written in Python and can be used to explore properties of lattices for $\mathbb{Z}_pG$-modules where $G$ is a finite abelian $p$-group and $\Z_p$  is the ring of $p$-adic integers. 
 ## Theoretical background
-Let  $G$ be a finite abelian  $p$-group and let  $\mathbb{Q}_p$ be the field of  $p$-adic numbers. Denote by $e_0, e_1,\ldots, e_r$ the primitive orthogonal idempotents of the semisimple algebra $\mathbb{Q}_p G$. In the article entitled "On the classification of local integral representations of finite abelian p-groups", Butler provides a method to associate most $ \mathbb{Z}_G$-lattices to diagrams of the form:
+Let  $G$ be a finite abelian  $p$-group and let  $\mathbb{Q}_p$ be the field of  $p$-adic numbers. Denote by $e_0, e_1,\ldots, e_r$ the primitive orthogonal idempotents of the semisimple algebra $\mathbb{Q}_p G$. In the article entitled "On the classification of local integral representations of finite abelian p-groups", Butler provides a method to associate most $\mathbb{Z}_G$-lattices to diagrams of the form:
 $$
 (V; V_0, \ldots, V_r),
 $$
-where $ V $ is a finitely generated $ \mathbb{Z}_p G $-module with $ p^{-1}|G| V = 0 $, and each $ V_i $ is a $ \mathbb{Z}_p G $-submodule of $ V $, subject to the following conditions:
+where $ V $ is a finitely generated $ \mathbb{Z}_p G $-module with $ p^{-1}|G| V = 0 $, and each $ V_i $ is a $ \mathbb{Z}_p G$-submodule of $ V $, subject to the following conditions:
 $ V = \sum_{j\neq i} V_j $ for all $ i = 0, 1, \ldots, r $, and 
 if $ e_i $ is a primitive idempotent of $ \mathbb{Q}_p G $ and $ K_i $ is the kernel of the natural ring homomorphism $ \mathbb{Z}_p G \to (\mathbb{Z}_p G)e_i $, then $ K_i V_i = 0 $.
 
