@@ -6,8 +6,8 @@ Let  $G$ be a finite abelian  $p$-group and let  $\mathbb{Q}_p$ be the field of 
 $$(V; V_0, \ldots, V_r),$$
 where  $V$ is a finitely generated $\mathbb{Z}_p G$-module with $p^{-1}|G| V = 0$, and each $V_i$ is a $\mathbb{Z}_pG$-submodule of $V$, subject to the following conditions:
 \begin{itemize}
-    \item \( V = \sum_{j\neq i} V_j \) for all \( i = 0, 1, \ldots, r \),
-    \item if \( e_i \) is a primitive idempotent of \( \mathbb{Q}_p G \) and \( K_i \) is the kernel of the natural ring homomorphism \( \mathbb{Z}_p G \to (\mathbb{Z}_p G)e_i \), then \( K_i V_i = 0 \).
+    \item  $V = \sum_{j\neq i} V_j$ for all $i = 0, 1, \ldots, r$,
+    \item if $e_i$ is a primitive idempotent of $\mathbb{Q}_p G$ and $K_i$ is the kernel of the natural ring homomorphism $\mathbb{Z}_pG \to (\mathbb{Z}_p G)e_i$, then \( K_i V_i = 0 \).
 \end{itemize}
 
 There is a  natural notion of morphism between diagrams, allowing us to establish a category of such objects.
