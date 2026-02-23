@@ -196,3 +196,9 @@ U.U_acts is a list of matrices where the first matrix corresponds to the action 
     ], [[1], [1]], [[1], [1]], [[1], [1]]]
 
 Recall that to define a diagram we need first to get the information about the group $G$ as the list of subgroups of $G$ that correspond to the non trivial primitive idempotents of $\Z_pG$ and the matrices of the action of the generators of $G$ on the modules $(\Z_pG)e_i$, and this information can be obtained by running the function  geral() as we did at the beginning of this tutorial.   
+
+## Partnerships and Funding
+
+This work has been carried out jointly by **Marlon Estanislau (UFMG)**, **John MacQuarrie (UFMG)**, and **Csaba Schneider (UFMG)**.  
+It has been supported by **FAPEMIG** and by the award of a doctoral grant to Marlon Estanislau ( 13632/2025-00).  
+Additionally, **CAPES** contributed by granting part of the doctoral scholarship of **Marlon Estanislau** (88887.688170/2022-00), who is supervised by John MacQuarrie.
